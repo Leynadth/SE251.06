@@ -100,12 +100,15 @@ function main()
         ball.x = c.width/2
         ball.y  =c.height/2
         ball.color = getRandomColor()
+        players[1].score += 1
+
     }
     if(ball.x >= 800)
     {
         ball.x = c.width/2
         ball.y  = c.height/2
         ball.color = getRandomColor()
+        players[0].score += 1
     }
     if(ball.x > c.width)
     {
@@ -139,6 +142,8 @@ function main()
         }
 
     //draw the objects
+    console.log(`${players[0].score} | ${players[1].score}`)
+
     pad[0].draw()
     pad[1].draw()
     ball.draw()
