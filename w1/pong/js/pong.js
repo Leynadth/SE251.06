@@ -32,9 +32,11 @@ if (ball.vx === 0 ){
 ball.vy = 5
 ball.color = `black`
 
-const player = []
-player[0] = new Player();
-player[1] = new Player();
+const players = []
+players[0] = new Player();
+players[1] = new Player();
+
+console.log(players)
 
 
 function main()
