@@ -13,19 +13,25 @@ var p1 = new Box();
 p1.w = 20
 p1.h = 150
 p1.x = 0 + p1.w/2
+p1.color = 'blue'
 
 var p2 = new Box();
 p2.w = 20
 p2.h = 150
 p2.x = 780 + p2.w/2
+p2.color = 'yellow'
 
 //ball setup
 var ball = new Box();
 ball.w = 20
 ball.h = 20
-ball.vx = -2
-ball.vy = -2
+ball.vx = Math.round(rand(-1, 1)) * 3
+if (ball.vx === 0 ){
+    ball.vx = 3
+}
+ball.vy = 5
 ball.color = `black`
+
 
 function main()
 {
@@ -87,11 +93,13 @@ function main()
     {
         ball.x = c.width/2
         ball.y  =c.height/2
+        ball.color = getRandomColor()
     }
     if(ball.x >= 800)
     {
         ball.x = c.width/2
         ball.y  = c.height/2
+        ball.color = getRandomColor()
     }
     if(ball.x > c.width)
     {
