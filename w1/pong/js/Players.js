@@ -3,6 +3,6 @@ class Player {
     this.name
     this.score
     this.highScore
-    this.pad
+    this.pad  = new Box()
     }
 }
