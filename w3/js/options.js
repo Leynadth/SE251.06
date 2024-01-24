@@ -7,6 +7,26 @@ function ShowClose(){
     var x = document.querySelector(".sides")
     x.classList.toggle("hidden");
 }
+
+var fill = document.querySelectorAll(".fill")
+for(let i=0; i<player.length; i++){
+fill[i].addEventListener("input",RGBCustom)
+
+function RGBCustom(e){
+    player[i].fill = e.target.value
+    pad[i].fill = e.target.value
+}
+}
+
+var stroke = document.querySelectorAll(".stroke")
+for(let i=0; i<player.length; i++){
+stroke[i].addEventListener("input",RGBCustom)
+
+function RGBCustom(e){
+    player[i].stroke = e.target.value
+    pad[i].stroke = e.target.value
+}
+}
 /*--------
     Make the Options Button 
     . on click
