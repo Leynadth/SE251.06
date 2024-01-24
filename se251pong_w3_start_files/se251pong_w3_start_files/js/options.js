@@ -1,13 +1,17 @@
-function Options(){
-    var x = document.getElementById("showClose");
-    if(x.style.display === "none"){
-        x.style.display = "block";
-    } 
-    else {
-        x.style.display = "none";
 
-    }
+
+var op = document.querySelector("#options h2")
+op.addEventListener("click",ShowClose)
+
+function ShowClose(){
+    var x = document.querySelector(".sides")
+    x.classList.toggle("hidden");
 }
+/*--------
+    Make the Options Button 
+    . on click
+    . show or hide the `.sides` div
+---------*/
 
 /*---------
     Program the two fill inputs to do the following:
