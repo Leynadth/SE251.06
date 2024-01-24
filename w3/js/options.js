@@ -27,6 +27,31 @@ function RGBCustom(e){
     pad[i].stroke = e.target.value
 }
 }
+
+for(let i=0; i<player.length; i++){
+    
+function KeyboardUp(e){
+    player[i].keys.u = e.target.value
+}
+var keyup = document.querySelectorAll(".u")
+keyup[i].addEventListener("input",KeyboardUp)
+
+function KeyboardDown(e){
+    player[i].keys.d = e.target.value
+}
+var keydown = document.querySelectorAll(".d")
+keydown[i].addEventListener("input",KeyboardDown)
+
+function Straight(e){
+    player[i].keys.s = e.target.value
+}
+var straight = document.querySelectorAll(".s")
+straight[i].addEventListener("input",Straight)}
+
+for(let i=0; i<player.length; i++){
+keyup[i].addEventListener("focus",e=>currentState="pause")
+keydown[i].addEventListener("focus",e=>currentState="pause")
+straight[i].addEventListener("focus",e=>currentState="pause")}
 /*--------
     Make the Options Button 
     . on click
