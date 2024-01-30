@@ -39,6 +39,7 @@ function RGBCustom(e){
 }
 }
 
+
 for(let i=0; i<player.length; i++){
     
 function KeyboardUp(e){
