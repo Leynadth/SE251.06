@@ -18,6 +18,8 @@ function RGBCustom(e){
 }
 }
 
+
+
 var stroke = document.querySelectorAll(".stroke")
 for(let i=0; i<player.length; i++){
 stroke[i].addEventListener("input",RGBCustom)
@@ -25,6 +27,15 @@ stroke[i].addEventListener("input",RGBCustom)
 function RGBCustom(e){
     player[i].stroke = e.target.value
     pad[i].stroke = e.target.value
+}
+}
+//Ball color
+var fill = document.querySelectorAll(".fill")
+for(let i=0; i<o.length; i++){
+fill[i].addEventListener("input",RGBCustom)
+
+function RGBCustom(e){
+    o[i].fill = e.target.value
 }
 }
 
