@@ -49,15 +49,21 @@
         const secMenu = document.createElement(`div`);
         secMenu.setAttribute(`id`, `start-options`);
         secMenu.style.opacity =`0`;
+        
         //new game button for second menu
         const newGame = document.createElement(`button`);
         newGame.appendChild(document.createTextNode(`New Game`));
         secMenu.appendChild(newGame);
+        newGame.setAttribute(`data-load`, `false`);
+
+        
 
         //Continue button for new menu
         const resume = document.createElement(`button`);
         resume.appendChild(document.createTextNode(`Continue`));
         secMenu.appendChild(resume);
+        resume.setAttribute(`data-load`, `true`);
+
         //high score button for new menu
         const highScore = document.createElement(`button`);
         highScore.appendChild(document.createTextNode(`High Scores`));
@@ -89,7 +95,7 @@
         newGame.addEventListener(`click`, (e)=>{
             $(`#start-options`).animate({opacity: 0}, 1000, function(){//animated second menu to disappear 
                 menus.removeChild(secMenu) //removed the start menu when the button is cllicked
-                window.location = `lobby.html?${e.target.dataset.load}`//links the lobby file when click 
+                window.location = `lobby.html?load=${e.target.dataset.load}`//links the lobby file when click 
             });
         })
 
@@ -97,7 +103,7 @@
         resume.addEventListener(`click`, (e)=>{
             $(`#start-options`).animate({opacity: 0}, 1000, function(){ //animated second menu to disappear 
                 menus.removeChild(secMenu) //removed the start menu when the button is cllicked
-                window.location = `lobby.html?${e.target.dataset.load}`//links the lobby file when click 
+                window.location = `lobby.html?load=${e.target.dataset.load}`//links the lobby file when click 
             });
         })
 
@@ -108,6 +114,8 @@
                 window.location = `hs.html?${e.target.dataset.load}`//links the lobby file when click 
             });
         })
+
+
     </script>
 </body>
 </html>
