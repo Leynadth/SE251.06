@@ -53,6 +53,7 @@
         const newGame = document.createElement(`button`);
         newGame.appendChild(document.createTextNode(`New Game`));
         secMenu.appendChild(newGame);
+
         //Continue button for new menu
         const resume = document.createElement(`button`);
         resume.appendChild(document.createTextNode(`Continue`));
@@ -84,6 +85,29 @@
             });
         })
 
+        //New game button link
+        newGame.addEventListener(`click`, (e)=>{
+            $(`#start-options`).animate({opacity: 0}, 1000, function(){//animated second menu to disappear 
+                menus.removeChild(secMenu) //removed the start menu when the button is cllicked
+                window.location = `lobby.html?${e.target.dataset.load}`//links the lobby file when click 
+            });
+        })
+
+        //Continue button link
+        resume.addEventListener(`click`, (e)=>{
+            $(`#start-options`).animate({opacity: 0}, 1000, function(){ //animated second menu to disappear 
+                menus.removeChild(secMenu) //removed the start menu when the button is cllicked
+                window.location = `lobby.html?${e.target.dataset.load}`//links the lobby file when click 
+            });
+        })
+
+        //High-Scores button link
+        highScore.addEventListener(`click`, (e)=>{
+            $(`#start-options`).animate({opacity: 0}, 1000, function(){ //animated second menu to disappear 
+                menus.removeChild(secMenu) //removed the start menu when the button is cllicked
+                window.location = `hs.html?${e.target.dataset.load}`//links the lobby file when click 
+            });
+        })
     </script>
 </body>
 </html>
