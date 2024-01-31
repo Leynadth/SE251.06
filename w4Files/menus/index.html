@@ -15,13 +15,13 @@
         <section class="blank"></section>
         <section id="content">
             <div id="menus">
-            <!-- This is what your final HMTL will look like.
-                <div id="start-options">
-                    <button data-load="false">New Game</button> NOTE: Will redirect to lobby.html and send load=false
-                    <button data-load="true">Continue</button> NOTE: Will redirect to lobby.html and send load=true
-                    <button>High Scores</button> NOTE: Will redirect to hs.html
-                </div>
-            -->
+
+                <!--<div style="display: none;" id="start-options">
+                    <button data-load="false">New Game</button>
+                    <button data-load="true">Continue</button>
+                    <button>High Scores</button>
+                </div>-->
+
             </div>
         </section>
         <section class="blank"></section>
@@ -35,17 +35,32 @@
         loadDiv.setAttribute(`id`, `load`);
         menus.appendChild(loadDiv);
      
+        //start menu created
         const startMenu = document.createElement(`div`);
         startMenu.setAttribute(`id`, `start`);
         startMenu.style.opacity =`0`;
         
+        //Start button for start menu is created
         const startButton = document.createElement(`button`);
         startButton.appendChild(document.createTextNode(`start`));
-        startMenu.appendChild(startButton)
+        startMenu.appendChild(startButton);
 
+        //create second menu
         const secMenu = document.createElement(`div`);
-        secMenu.setAttribute(`id`, `start`);
+        secMenu.setAttribute(`id`, `start-options`);
         secMenu.style.opacity =`0`;
+        //new game button for second menu
+        const newGame = document.createElement(`button`);
+        newGame.appendChild(document.createTextNode(`New Game`));
+        secMenu.appendChild(newGame);
+        //Continue button for new menu
+        const resume = document.createElement(`button`);
+        resume.appendChild(document.createTextNode(`Continue`));
+        secMenu.appendChild(resume);
+        //high score button for new menu
+        const highScore = document.createElement(`button`);
+        highScore.appendChild(document.createTextNode(`High Scores`));
+        secMenu.appendChild(highScore);
 
         const highScores = document.createElement(`div`);
         highScores.setAttribute(`id`, `high-scores`);
@@ -61,10 +76,10 @@
 
         startButton.addEventListener(`click`, (e)=>{
             console.log(`hi`)
-            $(`#start`).animate({opacity: 0}, 1000, function(){
-                menus.removeChild(startMenu)
-                menus.appendChild(secMenu)
-
+            $(`#start`).animate({opacity: 0}, 1000, function(){ //animated start menu to show up 
+                menus.removeChild(startMenu) //removed the start menu when the button is cllicked
+                menus.appendChild(secMenu) //add the second menu
+                $(`#start-options`).animate({opacity: 1}, 500);// show the second menu
 
             });
         })
