@@ -73,28 +73,29 @@ function main()
     pad[1].vy *= fy
     //player movement
     pad[1].move();
+        //applies friction
+        pad[1].vy *= fy
+        //player movement
+        pad[1].move();
 
     //ball movement
     ball.move()
 
     //p1 collision
-    if(pad[0].y < 0+pad[0].h/2)
-    {
-        pad[0].y = 0+pad[0].h/2
-    }
-    if(pad[0].y > c.height-pad[0].h/2)
-    {
-        pad[0].y = c.height-pad[0].h/2
-    }
-    //p2 collision
-    if(pad[1].y < 0+pad[1].h/2)
-    {
-        pad[1].y = 0+pad[1].h/2
-    }
-    if(pad[1].y > c.height-pad[1].h/2)
-    {
-        pad[1].y = c.height-pad[1].h/2
-    }
+for (let index = 0; index < array.length; index++) {
+    const element = array[index];
+        if(pad[i].y < i+pad[i].h/2)
+        {
+            pad[i].y = i+pad[i].h/2
+        }
+        if(pad[i].y > c.height-pad[i].h/2)
+        {           
+        pad[i].y = c.height-pad[i].h/2
+        }
+        pad[i].draw()
+        pad[i].draw()
+
+
     //ball collision 
     if(ball.x < 0)
     {
@@ -129,26 +130,19 @@ function main()
     }
 
     //p1 with ball collision
-    if(ball.collide(pad[0]))
-    {
-        ball.x = pad[0].x + pad[0].w/2 + ball.w/2
-        ball.vx = -ball.vx;
-    }
-
-        //p1 with ball collision
-        if(ball.collide(pad[1]))
+for (let index = 0; index < array.length; index++) {
+    const element = array[index];
+        if(ball.collide(pad[i]))
         {
-            ball.x = pad[1].x - pad[1].w/2 - ball.w/2
+            ball.x = pad[i].x + pad[i].w/2 + ball.w/2
             ball.vx = -ball.vx;
         }
-
-    //draw the objects
-    pad[0].draw()
-    pad[1].draw()
+}
+    
     ball.draw()
     for (var i = 0; i < scoreboard.length; i++) {
         scoreboard[i].innerText = `Player ${i + 1} Score: ${players[i].score}`;
     }
     console.log(`${players[0].score} | ${players[1].score}`)
     
-}
+}}
