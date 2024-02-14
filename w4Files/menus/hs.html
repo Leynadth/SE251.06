@@ -27,32 +27,26 @@
         <section class="blank"></section>
     </main>
     <script>
-        var message = ""
+        var message = "";
+        
         var highScoreList = [
                 {name:`aaa`, score:1000},
                 {name:`bbb`, score:980}
-                ]    
+                ];
         
-        var menus = document.querySelector(`#menus`);
-
-        const hsMenu = document.createElement(`div`);
-        hsMenu.setAttribute(`id`, `high-scores`);
-        hsMenu.style.opacity =`0`;
-
         
+        var menus = document.querySelector('#menus');
 
-        
-       
+        for (var i = 0; i < highScoreList.length; i++) 
+        {
+            var highscorePlayer = highScoreList[i];
 
-     
+            message += `div id="high-scores"> 
+            Player: ${highscorePlayer.name}, 
+            Score: ${highscorePlayer.score} </div>`;
+        }
 
-
-
-      
-        
-
-
-        
+        menus.innerHTML = message
 
     </script>
 </body>

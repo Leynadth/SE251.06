@@ -15,6 +15,8 @@ fill[i].addEventListener("input",RGBCustom)
 function RGBCustom(e){
     player[i].fill = e.target.value
     pad[i].fill = e.target.value
+    e.target.nextElementSibling.innerHTML=e.target.value
+
 }
 }
 
@@ -27,6 +29,8 @@ stroke[i].addEventListener("input",RGBCustom)
 function RGBCustom(e){
     player[i].stroke = e.target.value
     pad[i].stroke = e.target.value
+    e.target.nextElementSibling.innerHTML=e.target.value
+
 }
 }
 //Ball color
@@ -36,6 +40,8 @@ fill[i].addEventListener("input",RGBCustom)
 
 function RGBCustom(e){
     o[i].fill = e.target.value
+    e.target.nextElementSibling.innerHTML=e.target.value
+
 }
 }
 
