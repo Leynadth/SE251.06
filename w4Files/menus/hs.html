@@ -30,8 +30,8 @@
         var message = "";
         
         var highScoreList = [
-                {name:`aaa`, score:1000},
-                {name:`bbb`, score:980}
+                {name:`Marwish`, score:99999},
+                {name:`Baba`, score:1200}
                 ];
         
         
@@ -39,11 +39,11 @@
 
         for (var i = 0; i < highScoreList.length; i++) 
         {
-            var highscorePlayer = highScoreList[i];
+            var highScores = highScoreList[i];
 
-            message += `div id="high-scores"> 
-            Player: ${highscorePlayer.name}, 
-            Score: ${highscorePlayer.score} </div>`;
+            message += `<div id="high-scores"> 
+            Player: ${highScores.name}, 
+            Score: ${highScores.score} </div>`;
         }
 
         menus.innerHTML = message
