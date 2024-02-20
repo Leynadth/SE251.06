@@ -1,0 +1,204 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Week 2 Lab</title>
+<link type="text/css" rel="stylesheet" href="style.css" />
+<script type="text/javascript" src="week2.js"></script>
+
+</head>
+
+<body>
+
+<div id="form">
+	
+    <form name="info">
+    <p id="fnTitle">
+    First Name <br />
+    <input type="text" id="first-name"/> <span id="fn-error"> </span>
+    </p>
+    
+    <p id="lnTitle">
+   	Last Name <br />
+    <input type="text" id="last-name"/> <span id="ln-error"> </span>
+    </p>
+    
+    <p id="emailTitle">
+   	Email <br />
+    <input type="text" id="email"/> <span id="email-error"> </span>
+    </p>
+
+    <p id="confirmEmailTitle">
+        Confirm Email <br />
+     <input type="text" id="confirmEmail"/> <span id="confirmEmail-error"> </span>
+     </p>
+    
+    <p id="phoneTitle">
+   	Phone Number <br />
+    <input type="text" id="phone"/> <span id="phone-error"> </span>
+    </p>
+    
+    <input type="button" id="submitButton" value="submit" onclick="" />
+    </form>
+
+</div>
+
+<div id="confirmation">
+	<h1>Confirmation</h1>
+    <p id="info">
+    </p>
+</div>
+<script>
+    document.getElementById("submitButton").addEventListener("click", function(){
+    formValidation();
+});
+
+function formValidation(){
+    var firstNameInput = document.getElementById("first-name").value.trim();
+    var firstNameError = document.getElementById("fn-error");
+
+    var lastNameInput = document.getElementById("last-name").value.trim();
+    var lastNameError = document.getElementById("ln-error");
+
+    var email = document.getElementById("email").value.trim();
+    var emailError = document.getElementById("email-error");
+
+    var confirmEmail = document.getElementById("confirmEmail").value.trim();
+    var confirmEmailError = document.getElementById("confirmEmail-error");
+
+    var phone = document.getElementById("phone").value.trim();
+    var phoneError = document.getElementById("phone-error");
+
+    var regex = /^[A-Za-z\-]+$/;
+    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    var phoneRegex = /^\d{10}$/;
+
+
+    var validator = true;
+
+    //Reset
+    document.getElementById('first-name').style.border = "1px solid black";
+    document.getElementById('fn-error').innerHTML = " ";
+    document.getElementById('fnTitle').style.color = "black";
+
+    document.getElementById('last-name').style.border = "1px solid black";
+    document.getElementById('ln-error').innerHTML = " ";
+    document.getElementById('lnTitle').style.color = "black";
+
+
+
+    document.getElementById('email').style.border = "1px solid black";
+    document.getElementById('email-error').innerHTML = " ";
+    document.getElementById('emailTitle').style.color = "black";
+
+    document.getElementById('confirmEmail').style.border = "1px solid black";
+    document.getElementById('confirmEmail-error').innerHTML = " ";
+    document.getElementById('confirmEmailTitle').style.color = "black";
+
+    document.getElementById('phone').style.border = "1px solid black";
+    document.getElementById('phone-error').innerHTML = " ";
+    document.getElementById('phoneTitle').style.color = "black";
+
+
+    if (!firstNameInput) {
+        document.getElementById('first-name').style.border = "2px solid red";
+        document.getElementById('fn-error').innerHTML = "*";
+        document.getElementById('fn-error').style.color = "red";
+        document.getElementById('fnTitle').style.color = "red";
+        validator = false;
+    } 
+    else if (!regex.test(firstNameInput)){
+        document.getElementById('first-name').style.border = "2px solid red";
+        document.getElementById('fnTitle').style.color = "red";
+        document.getElementById('fn-error').innerHTML = "* Your first name must not include special characters";
+        validator = false;
+    }
+
+    if (!lastNameInput) {
+        document.getElementById('last-name').style.border = "2px solid red";
+        document.getElementById('ln-error').innerHTML = "*";
+        document.getElementById('ln-error').style.color = "red";
+        document.getElementById('lnTitle').style.color = "red";
+        validator = false;
+    } 
+    else if (!regex.test(lastNameInput)){
+        document.getElementById('last-name').style.border = "2px solid red";
+        document.getElementById('lnTitle').style.color = "red";
+
+        document.getElementById('ln-error').innerHTML = "* Your first name must not include special characters";
+        validator = false;
+    }
+
+    if (!email) {
+        document.getElementById('email').style.border = "2px solid red";
+        document.getElementById('email-error').innerHTML = "*";
+        document.getElementById('email-error').style.color = "red";
+        document.getElementById('emailTitle').style.color = "red";
+        validator = false;
+    } 
+    else if (!emailRegex.test(email)){
+        document.getElementById('email').style.border = "2px solid red";
+        document.getElementById('emailTitle').style.color = "red";
+        document.getElementById('email-error').innerHTML = "* Invalid Email Format";
+        validator = false;
+    }
+
+    if (!confirmEmail) {
+        document.getElementById('confirmEmail').style.border = "2px solid red";
+        document.getElementById('confirmEmail-error').innerHTML = "*";
+        document.getElementById('confirmEmail-error').style.color = "red";
+        document.getElementById('confirmEmailTitle').style.color = "red";
+        validator = false;
+    } 
+    else if (!emailRegex.test(confirmEmail)){
+        document.getElementById('confirmEmail').style.border = "2px solid red";
+        document.getElementById('confirmEmailTitle').style.color = "red";
+        document.getElementById('confirmEmail-error').innerHTML = "* Invalid Email Format";
+        validator = false;
+    }
+    else if (email !== confirmEmail) { // Compare email and confirmEmail
+        document.getElementById('confirmEmail').style.border = "2px solid red";
+        document.getElementById('confirmEmailTitle').style.color = "red";
+        document.getElementById('confirmEmail-error').innerHTML = "* Email addresses do not match";
+        validator = false;
+    }
+
+    if (!phone) {
+        document.getElementById('phone').style.border = "2px solid red";
+        document.getElementById('phone-error').innerHTML = "*";
+        document.getElementById('phone-error').style.color = "red";
+        document.getElementById('phoneTitle').style.color = "red";
+        validator = false;
+    } 
+    else if (!phoneRegex.test(phone)){
+        document.getElementById('phone').style.border = "2px solid red";
+        document.getElementById('phoneTitle').style.color = "red";
+        document.getElementById('phone-error').innerHTML = "* Invalid Phone Number";
+        validator = false;
+    }
+    
+    var formattedPhoneNumber = phone.substring(0, 3) + '-' + phone.substring(3, 6) + '-' + phone.substring(6);
+    document.getElementById('phone').value = formattedPhoneNumber;
+    
+
+    if (validator){
+        document.getElementById('form').style.display = "none";
+        var person = {
+            fname:firstNameInput,
+            lname:lastNameInput,
+            email:email,
+             phone:phone
+            };
+
+            
+        
+        document.getElementById('info').innerHTML = `First Name: ${person.fname} <br> Last Name: ${person.lname} <br> Email: ${person.email} <br> Phone: ${person.phone}`;
+        document.getElementById('confirmation').style.display = "block";
+    }
+
+    
+
+}
+</script>
+</body>
+</html>
