@@ -2,14 +2,13 @@
   "name": "se251_node",
   "version": "1.0.0",
   "description": "",
-  "main": "highscore.js",
+  "main": "app.js",
   "dependencies": {
     "express": "^4.17.1",
-    "hbs": "^4.1.2",
     "nodemon": "^3.0.1"
   },
   "scripts": {
-    "start": "node highscore.js",
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "serve": "nodemon server.js"
   },

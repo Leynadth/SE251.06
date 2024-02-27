@@ -1,16 +1,12 @@
 const express = require(`express`)
 const app = express()
 const fs = require(`fs`);
-const hbs = require(`hbs`);
-app.set('view engine', 'hbs');
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 const path = require('path')
 app.use(express.static(path.join(__dirname, 'public')))
 app.get('/favicon.ico', (req, res) => res.status(204));
-hbs.registerPartials(__dirname + '/views/partials', function (err) {});
-
 
 const readFile = (path)=>{
   return new Promise(
@@ -27,6 +23,7 @@ const readFile = (path)=>{
       });
     })
 }
+
 
 app.get(`/add`, (req, res)=>{
   const filePath = path.join(__dirname, `public`, `testform.html`)
@@ -56,7 +53,8 @@ app.post('/jeep', async (req, res) => {
 app.post('/delete', async (req, res) => { 
   var oldData =  await readFile(`./data/jeep.json`)
   var newData =  await JSON.parse(oldData)
-  newData.push(req.body)
+  const index = req.body.index;
+  newData.splice(index, 1); // Remove item at index
   const jsonString = JSON.stringify(newData);
   await fs.writeFile('./data/jeep.json', jsonString, err => {
     if (err) {
