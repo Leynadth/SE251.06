@@ -17,15 +17,15 @@
 
 <script>
 
-window.addEventListener(`load`, load)
+window.addEventListener('load', load)
 
-async function load(e) {
+async function load() {
     var promise = await fetch("http://localhost:80/jeep");
     var data = await promise.json();
     let sortedData = data.sort((a, b) => (b.year - a.year));
 
-    var output = document.querySelector(`#output`);
-    var message = ``;
+    var output = document.querySelector('#output');
+    var message = '';
     for (let i = 0; i < data.length; i++) {
         message += `<div class="item">`;
         for (let prop in data[i]) {
@@ -37,19 +37,23 @@ async function load(e) {
 
     output.innerHTML = message;
 
-    var deleteBtns = document.querySelectorAll(`.deletebtn`);
+    var deleteBtns = document.querySelectorAll('.deletebtn');
 
     for (let i = 0; i < deleteBtns.length; i++) {
         deleteBtns[i].addEventListener('click', async (e) => {
             var index = e.target.getAttribute('data-index');
-            await fetch("http://localhost:80/delete", {
+            var response = await fetch("http://localhost:80/delete", {
                 method: "POST",
                 body: JSON.stringify({ index: index }),
                 headers: {
                     "Content-type": "application/json; charset=UTF-8"
                 }
             });
-            load(); // Reload after delete
+            if (response.ok) {
+                load(); // Reload after delete only if delete was successful
+            } else {
+                console.error("Failed to delete record");
+            }
         });
     }
 }
@@ -58,9 +62,9 @@ document.getElementById('submitBtn').addEventListener('click', async (e) => {
     await fetch("http://localhost:80/jeep", {
         method: "POST",
         body: JSON.stringify({
-            make: document.querySelector(`input[name="make"]`).value,
-            model: document.querySelector(`input[name="model"]`).value,
-            year: document.querySelector(`input[name="year"]`).value
+            make: document.querySelector('input[name="make"]').value,
+            model: document.querySelector('input[name="model"]').value,
+            year: document.querySelector('input[name="year"]').value
         }),
         headers: {
             "Content-type": "application/json; charset=UTF-8"
