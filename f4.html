@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>F1</title>
+    <style>
+        main {
+            width: 300px;
+        }
+        .row {
+            display: grid;
+            grid-template-columns: 100px 100px;
+            border-bottom: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <main>
+       
+    </main>
+    <script>
+        var peeps = [
+            { name: 'Jay', age: 43 },
+            { name: 'Freddy', age: 26 },
+            { name: 'Mr T', age: 71 },
+            { name: 'Raiden', age: 12 },
+            { name: 'KJ', age: 9 }
+        ];
+
+        peeps.sort((a, b) => b.age - a.age);
+
+        var mainElement = document.querySelector('main');
+
+        peeps.forEach(person => {
+            var row = document.createElement('div');
+            row.setAttribute('class', 'row');
+
+            for (var prop in person) {
+                var propDiv = document.createElement('div');
+                propDiv.textContent = person[prop];
+                row.appendChild(propDiv);
+            }
+
+            if (person.age < 21) {
+                row.style.color = 'blue';
+            } else {
+                row.style.color = 'red';
+            }
+
+            mainElement.appendChild(row);
+        });
+    </script>
+</body>
+</html>
