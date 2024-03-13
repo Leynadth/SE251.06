@@ -6,58 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>F1</title>
     <style>
-        main {
-            width: 300px;
-        }
-        .row {
-            display: grid;
-            grid-template-columns: 100px 100px;
-            border-bottom: 1px solid black;
-        }
+      
     </style>
 </head>
 <body>
     <main>
-       
+        <div><input type="number" id="num1" value="5">+<input type="number" id="num2" value="5">=<input type="number" id="result" disabled></div>
+        <input type="button" value="Add The Numbers" id="addButton">
     </main>
     <script>
-        var peeps = [
-            { name: 'Jay', age: 43 },
-            { name: 'Freddy', age: 26 },
-            { name: 'Mr T', age: 71 },
-            { name: 'Raiden', age: 12 },
-            { name: 'KJ', age: 9 }
-        ];
+        function add(a, b) {
+            return a + b;
+        }
 
-        // Sort the array in descending order by age
-        peeps.sort((a, b) => b.age - a.age);
+        document.getElementById('addButton').addEventListener('click', () => {
+            // Get the values of the input fields and convert them to numbers
+            var num1 = Number(document.getElementById('num1').value);
+            var num2 = Number(document.getElementById('num2').value);
 
-        // Select the <main> element
-        var mainElement = document.querySelector('main');
-
-        // Loop through the array
-        peeps.forEach(person => {
-            // Create a div for each person
-            var row = document.createElement('div');
-            row.setAttribute('class', 'row');
-
-            // Loop through the properties of the object
-            for (var prop in person) {
-                // Create a div for each property
-                var propDiv = document.createElement('div');
-                propDiv.textContent = person[prop];
-                row.appendChild(propDiv);
-            }
-
-            // Set text color based on age
-            if (person.age < 21) {
-                row.style.color = 'blue';
-            } else {
-                row.style.color = 'red';
-            }
-
-            // Append the row to the main element
-            mainElement.appendChild(row);
+            // Call the add function and display the result in the third input field
+            document.getElementById('result').value = add(num1, num2);
         });
     </script>
 </body>
