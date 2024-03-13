@@ -11,28 +11,37 @@
 </head>
 <body>
     <main>
-        <div><input type="number" value="5">+<input type="number" value="5">=<input type="number" disabled></div>
-        <input type="button" value="Add The Numbers">
+        <div><input type="number" id="num1" value="5">+<input type="number" id="num2" value="5">=<input type="number" id="result" disabled></div>
+        <input type="button" value="Add The Numbers" id="addButton">
     </main>
     <script>
-       /*
-            create a function called add that accepts two arguments:
-                *a
-                *b
-                *return the sum of a and b
 
-            when the button is clicked
-                call an anonymous function (arrow ()=>{} or regular function(){}) 
-                The anonymous function will call the add function
-                    *pass the values of the inputs to the add function as Numbers
-                    HINT: type cast the values as numbers by using the Number() constructor function. 
-                    Example: Number(some string goes here);
-                *display the returned value in the last input.
-       */
-    </script>
-    <script>
-
-      
+/*
+create a function called add that accepts two arguments:
+    *a
+    *b
+    *return the sum of a and b
+*/
+        function add(a, b) {
+            return a + b;
+        }
+/*
+when the button is clicked
+    call an anonymous function (arrow ()=>{} or regular function(){}) 
+    The anonymous function will call the add function
+        *pass the values of the inputs to the add function as Numbers
+        HINT: type cast the values as numbers by using the Number() constructor function. 
+        Example: Number(some string goes here);
+    *display the returned value in the last input.
+*/
+        document.getElementById('addButton').addEventListener('click', () => {
+            var num1 = Number(document.getElementById('num1').value);
+            var num2 = Number(document.getElementById('num2').value);
+            document.getElementById('result').value = add(num1, num2);
+        });
     </script>
 </body>
 </html>
+
+
+

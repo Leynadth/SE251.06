@@ -34,21 +34,39 @@
         var messages = [`Hi`,`Hello`,`Goodbye`];
 
         var counter = 0;
+        
+        //create an object called `config` with the following properties
+        var config = {tag: 'div',id: 'm',class: 'message',parent: 'main'};
+            
+        /*
+            create a function called addMessage with two parameters:
+            * message=`` 
+            * obj={tag:`p`, id:`p`, class:`basic`, parent:`body`} which will accept the object
+        */
 
-        var config = {
-            tag: 'div',
-            id: 'm',
-            class: 'message',
-            parent: 'main'
-        };
-      
+        /*
+        The function will do the following:
+                Declare var element
+                Create an element based on the passed in object's tag name and store it in the `element` variable
+                Set the element's id attribute to equal the passed in object's id + the counter using the setAttribute function 
+                the result would be elements with id's named m0, m1, m2, etc.
+                Increment the counter
+                Set the element's class to equal the passed in object's class using the setAttribute method
+                Create a text node using the message argument 
+                append the text to the element
+                select the element named in the passed in objects parent property.
+                append the element to the passed in object's parent property
+                return the element
+                */
         function addMessage(message, obj) {
             var element = document.createElement(obj.tag);
             element.setAttribute('id', obj.id + counter);
             counter++;
+
             element.setAttribute('class', obj.class);
             var textNode = document.createTextNode(message);
             element.appendChild(textNode);
+            
             document.querySelector(obj.parent).appendChild(element);
             return element;
         }
@@ -57,11 +75,11 @@
             addMessage(message, config);
         });
 
-        (function display(list){
-            list.forEach(index => {
-                index.innerHTML += `<div class="table"><div><b>id:</b></div><div>${index.id}</div><div><b>class:</b></div><div>${index.classList[0]}</div></div>`;
-            });
-        })(document.querySelectorAll(`.message`));
+
+        /*---------------------DO NOT DELETE-----------------------------*/
+        (function display(list){list.forEach(index=>{index.innerHTML += `<div class="table"><div><b>id:</b></div><div>${index.id}</div><div><b>class:</b></div><div>${index.classList[0]}</div></div>`})})(document.querySelectorAll(`.message`));
+
+
     </script>
 </body>
 </html>
